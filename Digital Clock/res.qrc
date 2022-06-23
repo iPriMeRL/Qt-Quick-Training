@@ -1,0 +1,39 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/alarm-off-feedback.svg</file>
+        <file>assets/alarm-on-feedback.svg</file>
+        <file>assets/btn-arrow-active.svg</file>
+        <file>assets/btn-arrow-hover.svg</file>
+        <file>assets/btn-back-active.svg</file>
+        <file>assets/btn-back-hover.svg</file>
+        <file>assets/btn-pause-active.svg</file>
+        <file>assets/btn-pause-hover.svg</file>
+        <file>assets/btn-play-active.svg</file>
+        <file>assets/btn-play-hover.svg</file>
+        <file>assets/btn-reload-active.svg</file>
+        <file>assets/btn-reload-hover.svg</file>
+        <file>assets/check_disabled.svg</file>
+        <file>assets/check_selected.svg</file>
+        <file>assets/comp-clock-dial.svg</file>
+        <file>assets/comp-clock-dial-setting-alarm-mode.svg</file>
+        <file>assets/comp-slider.svg</file>
+        <file>assets/comp_tic-tac.svg</file>
+        <file>assets/comp_tic-tac_alarm_mode.svg</file>
+        <file>assets/handle-enable.svg</file>
+        <file>assets/handle-pressed.svg</file>
+        <file>assets/ic-clock-hand-alarm.svg</file>
+        <file>assets/ic-clock-hand_hours.svg</file>
+        <file>assets/ic-clock-hand_mins.svg</file>
+        <file>assets/ic-clock-hands_center.svg</file>
+        <file>assets/ic-hour-handle.svg</file>
+        <file>assets/ic-mins-handle.svg</file>
+        <file>assets/ic-tick-disabled.svg</file>
+        <file>assets/ic-tick-hover.svg</file>
+        <file>assets/ic-tick-selected.svg</file>
+        <file>assets/switch-off-disable.svg</file>
+        <file>assets/switch-off-selected.svg</file>
+        <file>assets/switch-on-disable.svg</file>
+        <file>assets/switch-on-disable (copy).svg</file>
+        <file>assets/switch-on-selected.svg</file>
+    </qresource>
+</RCC>
