@@ -52,4 +52,10 @@ Rectangle {
             }
         }
     }
+
+    Behavior on opacity {
+        NumberAnimation {
+            duration: 1000
+        }
+    }
 }

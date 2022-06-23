@@ -7,8 +7,8 @@ Window {
     visible: true
     title: qsTr("Dial Clock")
     Button {
-        id: ciao
-        testo: "AOH"
+        id: tim
+        testo: "TIMER"
         state: "active"
         anchors.top: parent.top
         anchors.left: parent.left
@@ -16,12 +16,16 @@ Window {
         anchors.leftMargin: 18
     }
     Button {
-        id: arrivederci
-        testo: "BELLA"
+        id: alarm
+        testo: "ALARM"
         state: "active"
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.topMargin: 628
         anchors.rightMargin: 18
     }
+    /*AlarmSwitch {
+        id: as1
+        anchors.centerIn: parent
+    }*/
 }
