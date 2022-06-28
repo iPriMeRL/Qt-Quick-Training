@@ -5,7 +5,7 @@ Window {
     width: 480
     height: 800
     visible: true
-    title: qsTr("Dial Clock")
+    title: qsTr("Clock")
     Button {
         id: tim
         testo: "TIMER"

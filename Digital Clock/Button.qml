@@ -34,8 +34,8 @@ Rectangle {
         text: root.testo
         color: root.colTesto
         font.family: "Ubuntu Light"
-        font.pixelSize: 30
         font.letterSpacing: 1.8
+        font.pixelSize: 30
         anchors.centerIn: root
         anchors.topMargin: 14
         anchors.bottomMargin: 14

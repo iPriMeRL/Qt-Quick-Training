@@ -8,13 +8,13 @@ Rectangle{
 
     Button2{
         id: del
+        testo: "DELETE"
+        color: "#151B2E"
+        opacity: contaSel() ? 1 : 0
         anchors.left: root.left
         anchors.leftMargin: 23
         anchors.top: root.top
         anchors.topMargin: 706
-        testo: "DELETE"
-        color: "#151B2E"
-        opacity: contaSel() ? 1 : 0
     }
 
     Image {
@@ -48,23 +48,23 @@ Rectangle{
     Text {
         id: everyday
         text: qsTr("Everyday")
+        color: "#FCB647"
+        font.pixelSize: 20
         anchors.top: root.top
         anchors.topMargin: 135
         anchors.left: root.left
         anchors.leftMargin: 38
-        font.pixelSize: 20
-        color: "#FCB647"
     }
 
     Text {
         id: others
         text: qsTr("Others")
+        color: "#FCB647"
+        font.pixelSize: 20
         anchors.top: root.top
         anchors.topMargin: 410
         anchors.left: root.left
         anchors.leftMargin: 38
-        font.pixelSize: 20
-        color: "#FCB647"
     }
 
     ListModel{
@@ -87,10 +87,10 @@ Rectangle{
         anchors.fill: parent
         model: everyList
         delegate: PageAlarmComponent{}
+        clip: true
         anchors.leftMargin: 28.5
         anchors.topMargin: everyday.anchors.topMargin + 40
         anchors.bottomMargin: 400
-        clip: true
     }
 
     ListModel{
@@ -113,10 +113,10 @@ Rectangle{
         anchors.fill: parent
         model: othList
         delegate: PageAlarmComponent{}
+        clip: true
         anchors.leftMargin: 28.5
         anchors.topMargin: others.anchors.topMargin + 40
         anchors.bottomMargin: 100
-        clip: true
     }
 
     MouseArea{
