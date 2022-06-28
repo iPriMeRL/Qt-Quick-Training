@@ -2,7 +2,7 @@ import QtQuick
 
 Rectangle {
     id: root
-    property bool onOrOff: false
+    property bool isOn: false
     width: 112
     height: 60
     radius: 8
@@ -10,10 +10,7 @@ Rectangle {
 
     Image {
         id: navicella
-        source: {
-            if(root.onOrOff) return "/assets/switch-on-selected.svg"
-            else return "/assets/switch-on-disable.svg"
-        }
+        source: root.isOn ? "/assets/switch-on-selected.svg" : "/assets/switch-on-disable2.svg"
         anchors.right: parent.right
         anchors.rightMargin: 4
         anchors.top: parent.top
@@ -23,10 +20,7 @@ Rectangle {
     }
     Image {
         id: tasto
-        source: {
-            if(root.onOrOff) return "/assets/switch-off-disable.svg"
-            else return "/assets/switch-off-selected.svg"
-        }
+        source: root.isOn ? "/assets/switch-off-disable.svg" : "/assets/switch-off-selected.svg"
         anchors.left: parent.left
         anchors.leftMargin: 4
         anchors.top: parent.top
@@ -38,12 +32,12 @@ Rectangle {
     MouseArea {
         anchors.fill: root
         onClicked: {
-            if(root.onOrOff){
-                root.onOrOff = false
+            if(root.isOn){
+                root.isOn = false
                 root.color = "#313848"
             }
             else{
-                root.onOrOff = true
+                root.isOn = true
                 root.color = "#0f494f"
             }
         }
