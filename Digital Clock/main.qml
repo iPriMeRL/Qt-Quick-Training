@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Controls
 
 Window {
     id: root
@@ -6,26 +7,22 @@ Window {
     height: 800
     visible: true
     title: qsTr("Dial Clock")
-    Button {
-        id: tim
-        testo: "TIMER"
-        state: "active"
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.topMargin: 628
-        anchors.leftMargin: 18
+    StackView{
+        id: stackView
+        anchors.fill: parent
+        initialItem: pageSetAlarm
     }
-    Button {
-        id: alarm
-        testo: "ALARM"
-        state: "active"
-        anchors.top: parent.top
-        anchors.right: parent.right
-        anchors.topMargin: 628
-        anchors.rightMargin: 18
+
+    Component{
+        id: pageHome
+        PageHome{}
     }
-    /*AlarmSwitch {
-        id: as1
-        anchors.centerIn: parent
-    }*/
+    Component {
+        id: pageAlarm
+        PageAlarm{}
+    }
+    Component {
+        id: pageSetAlarm
+        PageSetAlarm{}
+    }
 }

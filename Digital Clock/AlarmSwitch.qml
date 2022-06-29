@@ -32,14 +32,8 @@ Rectangle {
     MouseArea {
         anchors.fill: root
         onClicked: {
-            if(root.isOn){
-                root.isOn = false
-                root.color = "#313848"
-            }
-            else{
-                root.isOn = true
-                root.color = "#0f494f"
-            }
+            root.isOn ? root.color = "#313848" : root.color = "#0f494f"
+            root.isOn = !root.isOn
         }
     }
 }
