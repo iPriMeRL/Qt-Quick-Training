@@ -2,9 +2,12 @@ import QtQuick
 
 Rectangle{
     id: root
+    property bool isEveryday: true
+    property bool isSetDate: true
     width: 480
     height: 800
     color: "#151B2E"
+
     Image {
         id: goBack
         source: "/assets/btn-back-hover.svg"
@@ -12,6 +15,11 @@ Rectangle{
         anchors.top: root.top
         anchors.leftMargin: 28
         anchors.topMargin: 20
+
+        MouseArea{
+            anchors.fill: parent
+            onClicked: stackView.pop()
+        }
     }
 
     Text {
@@ -33,10 +41,10 @@ Rectangle{
         anchors.topMargin: 120
     }
 
-    Button3{
+    Button192x50 {
         id: everyday
         testo: "Everyday"
-        state: "hover"
+        state: root.isEveryday ? "active" : "hover"
         anchors.top: root.top
         anchors.topMargin: 140
         anchors.left: root.left
@@ -45,23 +53,15 @@ Rectangle{
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                if(parent.state === "hover"){
-                    if(date.state === "active"){
-                        date.state = "hover"
-                        date.testo = "Set date"
-                    }
-                    parent.state = "active"
-                }
-                else{
-                    parent.state = "hover"
-                }
+                root.isEveryday = !root.isEveryday
+                if(root.isSetDate) root.isSetDate = false
             }
         }
     }
-    Button3{
+    Button192x50 {
         id: date
         testo: "Set date"
-        state: "hover"
+        state: root.isSetDate ? "active" : "hover"
         anchors.top: root.top
         anchors.topMargin: 140
         anchors.left: root.left
@@ -70,14 +70,26 @@ Rectangle{
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                if(parent.state === "hover"){
-                    if(everyday.state === "active") everyday.state = "hover"
-                    parent.state = "active"
-                }
-                else{
-                    parent.state = "hover"
-                }
+                root.isSetDate = !root.isSetDate
+                if(root.isEveryday) root.isEveryday = false
             }
+        }
+    }
+
+    Button434x64 {
+        id: setAlarm
+        testo: "SET ALARM"
+        colTesto: "#00A6E2"
+        border.color: "#00A6E2"
+        state: "active"
+        anchors.top: root.top
+        anchors.topMargin: 706
+        anchors.left: root.left
+        anchors.leftMargin: 23
+
+        MouseArea{
+            anchors.fill: parent
+            onClicked: stackView.pop()
         }
     }
 }

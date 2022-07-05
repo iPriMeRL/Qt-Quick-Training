@@ -57,6 +57,16 @@ Rectangle{
         anchors.leftMargin: 14.5
     }
 
+    Item{
+        anchors.fill: root
+        anchors.leftMargin: 100
+        anchors.rightMargin: 195
+        MouseArea{
+            anchors.fill: parent
+            onClicked: stackView.push(pageSetAlarm)
+        }
+    }
+
     Text {
         id: giorno
         text: gio
@@ -73,7 +83,6 @@ Rectangle{
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: -50
     }
-
 
     AlarmSwitch{
         anchors.verticalCenter: root.verticalCenter

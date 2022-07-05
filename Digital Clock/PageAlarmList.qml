@@ -6,10 +6,11 @@ Rectangle{
     height: 800
     color: "#151B2E"
 
-    Button2{
+    Button434x64{
         id: del
         testo: "DELETE"
         color: "#151B2E"
+        state: "active"
         opacity: contaSel() ? 1 : 0
         anchors.left: root.left
         anchors.leftMargin: 23
@@ -24,6 +25,11 @@ Rectangle{
         anchors.top: root.top
         anchors.leftMargin: 28
         anchors.topMargin: 20
+
+        MouseArea{
+            anchors.fill: parent
+            onClicked: stackView.pop()
+        }
     }
 
     Text {
@@ -86,7 +92,7 @@ Rectangle{
     ListView{
         anchors.fill: parent
         model: everyList
-        delegate: PageAlarmComponent{}
+        delegate: PageAlarmListComponent{}
         clip: true
         anchors.leftMargin: 28.5
         anchors.topMargin: everyday.anchors.topMargin + 40
@@ -112,7 +118,7 @@ Rectangle{
     ListView{
         anchors.fill: parent
         model: othList
-        delegate: PageAlarmComponent{}
+        delegate: PageAlarmListComponent{}
         clip: true
         anchors.leftMargin: 28.5
         anchors.topMargin: others.anchors.topMargin + 40
