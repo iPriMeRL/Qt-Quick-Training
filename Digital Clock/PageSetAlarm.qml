@@ -2,15 +2,15 @@ import QtQuick
 
 Rectangle{
     id: root
-    property bool isEveryday: true
-    property bool isSetDate: true
+    property bool isEveryday: false
+    property bool isSetDate: false
     width: 480
     height: 800
     color: "#151B2E"
 
     Image {
         id: goBack
-        source: "/assets/btn-back-hover.svg"
+        source: "/assets/btn-back-active.svg"
         anchors.left: root.left
         anchors.top: root.top
         anchors.leftMargin: 28
@@ -41,7 +41,7 @@ Rectangle{
         anchors.topMargin: 120
     }
 
-    Button192x50 {
+    ButtonEveryAndDate {
         id: everyday
         testo: "Everyday"
         state: root.isEveryday ? "active" : "hover"
@@ -58,7 +58,7 @@ Rectangle{
             }
         }
     }
-    Button192x50 {
+    ButtonEveryAndDate {
         id: date
         testo: "Set date"
         state: root.isSetDate ? "active" : "hover"
@@ -76,12 +76,16 @@ Rectangle{
         }
     }
 
-    Button434x64 {
+    Button {
         id: setAlarm
-        testo: "SET ALARM"
-        colTesto: "#00A6E2"
-        border.color: "#00A6E2"
+        width: 434
+        height: 64
         state: "active"
+        testo: "SET ALARM"
+        colTestoAct: "#00A6E2"
+        colBotAct: "#151B2E"
+        colTestoHov: "white"
+        colBotHov: "#00A6E2"
         anchors.top: root.top
         anchors.topMargin: 706
         anchors.left: root.left

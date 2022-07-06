@@ -6,22 +6,21 @@ Rectangle {
     width: 192
     height: 50
     radius: 25
-    border.width: 1
     color: "#313848"
     states: [
         State {
             name: "active"
             PropertyChanges {
                 target: root
-                opacity: 1
                 border.color: "#E2E5E7"
+                border.width: 1
             }
         },
         State {
             name: "hover"
             PropertyChanges {
                 target: root
-                opacity: 1
+                border.width: 0
             }
         }
     ]
@@ -47,9 +46,4 @@ Rectangle {
         anchors.topMargin: 8
     }
 
-    Behavior on opacity {
-        NumberAnimation {
-            duration: 1000
-        }
-    }
 }

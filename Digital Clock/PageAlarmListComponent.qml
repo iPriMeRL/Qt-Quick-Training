@@ -55,16 +55,18 @@ Rectangle{
         anchors.verticalCenter: root.verticalCenter
         anchors.left: root.left
         anchors.leftMargin: 14.5
-    }
 
-    Item{
-        anchors.fill: root
-        anchors.leftMargin: 100
-        anchors.rightMargin: 195
         MouseArea{
             anchors.fill: parent
-            onClicked: stackView.push(pageSetAlarm)
+            onClicked: isSelected = !isSelected
         }
+    }
+
+    MouseArea{
+        anchors.fill: parent
+        anchors.leftMargin: 60
+        anchors.rightMargin: 140
+        onClicked: stackView.push(pageSetAlarm)
     }
 
     Text {
@@ -90,10 +92,6 @@ Rectangle{
         anchors.rightMargin: 14.5
     }
 
-    MouseArea{
-        anchors.fill: bottone
-        onClicked: isSelected = !isSelected
-    }
 }
 
 

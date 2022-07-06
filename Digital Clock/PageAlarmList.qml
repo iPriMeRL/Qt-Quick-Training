@@ -6,21 +6,44 @@ Rectangle{
     height: 800
     color: "#151B2E"
 
-    Button434x64{
+    Button {
         id: del
-        testo: "DELETE"
-        color: "#151B2E"
+        width: 434
+        height: 64
         state: "active"
+        testo: "DELETE"
+        colTestoAct: "#EC6545"
+        colBotAct: "#151B2E"
         opacity: contaSel() ? 1 : 0
         anchors.left: root.left
         anchors.leftMargin: 23
         anchors.top: root.top
         anchors.topMargin: 706
+
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                if(parent.opacity === 1){
+                    for(var i=0; i<everyList.count; i++){
+                        if(everyList.get(i).isSelected){
+                            everyList.remove(i)
+                            i--
+                        }
+                    }
+                    for(i=0; i<othList.count; i++){
+                        if(othList.get(i).isSelected){
+                            othList.remove(i)
+                            i--
+                        }
+                    }
+                }
+            }
+        }
     }
 
     Image {
         id: goBack
-        source: "/assets/btn-back-hover.svg"
+        source: "/assets/btn-back-active.svg"
         anchors.left: root.left
         anchors.top: root.top
         anchors.leftMargin: 28
@@ -31,6 +54,45 @@ Rectangle{
             onClicked: stackView.pop()
         }
     }
+
+    Item {
+        id: piu
+        width: 40
+        height: 40
+        anchors.top: root.top
+        anchors.topMargin: 40
+        anchors.right: root.right
+        anchors.rightMargin: 50
+        Rectangle{
+            id: rectVert
+            width: 6
+            height: parent.height
+            color: "#9FAAB0"
+            radius: 3
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+        Rectangle{
+            id: rectOriz
+            width: parent.width
+            height: 6
+            color: "#9FAAB0"
+            radius: 3
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        MouseArea{
+            anchors.fill: parent
+            onClicked: stackView.push(pageSetAlarm)
+        }
+    }
+
+
+
+
+
+
+
+
 
     Text {
         id: alClockList
@@ -123,26 +185,6 @@ Rectangle{
         anchors.leftMargin: 28.5
         anchors.topMargin: others.anchors.topMargin + 40
         anchors.bottomMargin: 100
-    }
-
-    MouseArea{
-        anchors.fill: del
-        onClicked: {
-            if(del.opacity === 1){
-                for(var i=0; i<everyList.count; i++){
-                    if(everyList.get(i).isSelected){
-                        everyList.remove(i)
-                        i--
-                    }
-                }
-                for(i=0; i<othList.count; i++){
-                    if(othList.get(i).isSelected){
-                        othList.remove(i)
-                        i--
-                    }
-                }
-            }
-        }
     }
 
     function contaSel(){

@@ -8,7 +8,7 @@ Rectangle{
 
     Image{
         id: goBack
-        source: "/assets/btn-back-hover.svg"
+        source: "/assets/btn-back-active.svg"
         anchors.left: root.left
         anchors.top: root.top
         anchors.leftMargin: 28
@@ -20,11 +20,13 @@ Rectangle{
         }
     }
 
-    Button434x64 {
+    Button {
         id: stTim
+        width: 434
+        height: 64
         testo: "START"
-        colTesto: "#00A6E2"
-        border.color: "#00A6E2"
+        colTestoAct: "#00A6E2"
+        colBotAct: "#151B2E"
         state: "active"
         anchors.top: root.top
         anchors.topMargin: 706

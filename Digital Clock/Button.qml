@@ -3,33 +3,36 @@ import QtQuick
 Rectangle {
     id: root
     property string testo: ""
-    property string colTesto: "#EC6545"
-    width: 434
+    property string colTestoAct: ""
+    property string colTestoHov: ""
+    property string colBotAct: ""
+    property string colBotHov: ""
+    width: 190
     height: 64
     radius: 32
-    border.color: "#EC6545"
+    border.color: state === "active" ? colTestoAct : colBotHov
     border.width: 1
     states: [
         State {
             name: "active"
             PropertyChanges {
                 target: root
-                color: "#151B2E"
+                color: colBotAct
             }
             PropertyChanges {
                 target: txt
-                color: colTesto
+                color: colTestoAct
             }
         },
         State {
             name: "hover"
             PropertyChanges {
                 target: root
-                color: colTesto
+                color: colBotHov
             }
             PropertyChanges {
                 target: txt
-                color: "white"
+                color: colTestoHov
             }
         }
     ]
@@ -50,4 +53,5 @@ Rectangle {
             duration: 300
         }
     }
+
 }

@@ -85,10 +85,14 @@ Rectangle {
         }
     }
 
-    Button190x64 {
+    Button {
         id: tim
-        testo: "TIMER"
+        width: 190
+        height: 64
         state: "active"
+        testo: "TIMER"
+        colTestoAct: "#FCB647"
+        colBotAct: "#151B2E"
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.topMargin: 628
@@ -98,10 +102,14 @@ Rectangle {
             onClicked: stackView.push(pageTimer)
         }
     }
-    Button190x64 {
+    Button {
         id: alarm
-        testo: "ALARM"
+        width: 190
+        height: 64
         state: "active"
+        testo: "ALARM"
+        colTestoAct: "#FCB647"
+        colBotAct: "#151B2E"
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.topMargin: 628
@@ -111,4 +119,5 @@ Rectangle {
             onClicked: stackView.push(pageAlarmList)
         }
     }
+
 }
