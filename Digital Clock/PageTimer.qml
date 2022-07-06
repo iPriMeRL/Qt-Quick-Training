@@ -5,6 +5,7 @@ Rectangle{
     width: 480
     height: 800
     color: "#151B2E"
+    signal toBack;
 
     Image{
         id: goBack
@@ -16,7 +17,7 @@ Rectangle{
 
         MouseArea{
             anchors.fill: parent
-            onClicked: stackView.pop()
+            onClicked: root.toBack()
         }
     }
 
@@ -35,7 +36,7 @@ Rectangle{
 
         MouseArea{
             anchors.fill: parent
-            onClicked: stackView.pop()
+            onClicked: root.toBack()
         }
     }
 

@@ -5,6 +5,8 @@ Rectangle{
     width: 480
     height: 800
     color: "#151B2E"
+    signal toSetAlarm;
+    signal toBack;
 
     Button {
         id: del
@@ -51,7 +53,7 @@ Rectangle{
 
         MouseArea{
             anchors.fill: parent
-            onClicked: stackView.pop()
+            onClicked: root.toBack()
         }
     }
 
@@ -82,17 +84,9 @@ Rectangle{
 
         MouseArea{
             anchors.fill: parent
-            onClicked: stackView.push(pageSetAlarm)
+            onClicked: root.toSetAlarm()
         }
     }
-
-
-
-
-
-
-
-
 
     Text {
         id: alClockList
@@ -154,7 +148,9 @@ Rectangle{
     ListView{
         anchors.fill: parent
         model: everyList
-        delegate: PageAlarmListComponent{}
+        delegate: PageAlarmListComponent{
+            onToSetAlarmApp: root.toSetAlarm()
+        }
         clip: true
         anchors.leftMargin: 28.5
         anchors.topMargin: everyday.anchors.topMargin + 40
@@ -180,7 +176,9 @@ Rectangle{
     ListView{
         anchors.fill: parent
         model: othList
-        delegate: PageAlarmListComponent{}
+        delegate: PageAlarmListComponent{
+            onToSetAlarmApp: root.toSetAlarm()
+        }
         clip: true
         anchors.leftMargin: 28.5
         anchors.topMargin: others.anchors.topMargin + 40

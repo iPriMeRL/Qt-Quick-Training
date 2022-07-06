@@ -6,6 +6,7 @@ Rectangle{
     height: 88
     color: "#151B2E"
     state: stato
+    signal toSetAlarmApp;
     states: [
         State {
             name: "everyday"
@@ -51,7 +52,7 @@ Rectangle{
 
     Image {
         id: bottone
-        source: model.isSelected ? "/assets/check_selected.svg" : "/assets/check_disabled.svg"
+        source: isSelected ? "/assets/check_selected.svg" : "/assets/check_disabled.svg"
         anchors.verticalCenter: root.verticalCenter
         anchors.left: root.left
         anchors.leftMargin: 14.5
@@ -66,7 +67,7 @@ Rectangle{
         anchors.fill: parent
         anchors.leftMargin: 60
         anchors.rightMargin: 140
-        onClicked: stackView.push(pageSetAlarm)
+        onClicked: root.toSetAlarmApp()
     }
 
     Text {

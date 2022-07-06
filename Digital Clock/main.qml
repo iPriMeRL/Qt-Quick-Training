@@ -19,14 +19,21 @@ Window {
     }
     Component {
         id: pageAlarmList
-        PageAlarmList{}
+        PageAlarmList{
+            onToBack: stackView.pop()
+            onToSetAlarm: stackView.push(pageSetAlarm)
+        }
     }
     Component {
         id: pageSetAlarm
-        PageSetAlarm{}
+        PageSetAlarm{
+            onToBack: stackView.pop()
+        }
     }
     Component {
         id: pageTimer
-        PageTimer{}
+        PageTimer{
+            onToBack: stackView.pop()
+        }
     }
 }

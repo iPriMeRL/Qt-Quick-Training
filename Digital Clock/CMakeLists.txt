@@ -14,9 +14,9 @@ qt_add_executable(appprovaClock
 qt_add_qml_module(appprovaClock
     URI provaClock
     VERSION 1.0
-    QML_FILES main.qml Button190x64.qml AlarmSwitch.qml PageHome.qml PageAlarmList.qml
+    QML_FILES main.qml AlarmSwitch.qml PageHome.qml PageAlarmList.qml
     ButtonEveryAndDate.qml PageSetAlarm.qml PageAlarmListComponent.qml
-    Button434x64.qml PageTimer.qml PageTimerBlock.qml PageTimerArrows.qml
+    PageTimer.qml PageTimerBlock.qml PageTimerArrows.qml
     Button.qml
 )
 
