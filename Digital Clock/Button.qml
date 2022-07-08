@@ -3,28 +3,36 @@ import QtQuick
 Rectangle {
     id: root
     property string testo: ""
-    property string colTesto: ""
+    property string colTestoAct: ""
+    property string colTestoHov: ""
+    property string colBotAct: ""
+    property string colBotHov: ""
     width: 190
     height: 64
     radius: 32
-    border.color: "#FCB647"
+    border.color: state === "active" ? colTestoAct : colBotHov
     border.width: 1
     states: [
         State {
             name: "active"
             PropertyChanges {
                 target: root
-                opacity: 1
-                colTesto: "#FCB647"
+                color: colBotAct
+            }
+            PropertyChanges {
+                target: txt
+                color: colTestoAct
             }
         },
         State {
             name: "hover"
             PropertyChanges {
                 target: root
-                opacity: 1
-                color: "#FCB647"
-                colTesto: "black"
+                color: colBotHov
+            }
+            PropertyChanges {
+                target: txt
+                color: colTestoHov
             }
         }
     ]
@@ -32,23 +40,18 @@ Rectangle {
     Text {
         id: txt
         text: root.testo
-        color: root.colTesto
         font.family: "Ubuntu Light"
-        font.pixelSize: 30
         font.letterSpacing: 1.8
+        font.pixelSize: 30
         anchors.centerIn: root
         anchors.topMargin: 14
         anchors.bottomMargin: 14
     }
 
-    MouseArea{
-        anchors.fill: root
-        onClicked: root.state === "active" ? root.state = "hover" : root.state = "active"
-    }
-
     Behavior on opacity {
         NumberAnimation {
-            duration: 1000
+            duration: 300
         }
     }
+
 }

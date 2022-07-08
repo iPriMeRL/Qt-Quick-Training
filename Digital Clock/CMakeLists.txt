@@ -14,16 +14,20 @@ qt_add_executable(appprovaClock
 qt_add_qml_module(appprovaClock
     URI provaClock
     VERSION 1.0
-    QML_FILES main.qml Button.qml AlarmSwitch.qml PageHome.qml PageAlarm.qml Button2.qml PageSetAlarm.qml PageAlarmComponent.qml
-    Button3.qml
+    QML_FILES main.qml AlarmSwitch.qml PageHome.qml PageAlarmList.qml
+    ButtonEveryAndDate.qml PageSetAlarm.qml PageAlarmListComponent.qml
+    PageTimer.qml PageTimerBlock.qml PageTimerArrows.qml
+    Button.qml
 )
 
 qt_add_resources(appprovaClock
     "assets"
     PREFIX "/"
-    FILES assets/switch-on-selected.svg assets/switch-off-disable.svg assets/switch-off-selected.svg assets/switch-on-disable2.svg
+    FILES assets/switch-on-selected.svg assets/switch-off-disable.svg
+    assets/switch-off-selected.svg assets/switch-on-disable2.svg
     assets/btn-back-hover.svg assets/check_disabled.svg assets/check_selected.svg
-    assets/ic-tick-selected.svg assets/ic-tick-disabled.svg
+    assets/ic-tick-selected.svg assets/ic-tick-disabled.svg assets/btn-arrow-active.svg
+    assets/timer.svg assets/alarm-on-feedback.svg assets/btn-back-active.svg
 )
 
 set_target_properties(appprovaClock PROPERTIES

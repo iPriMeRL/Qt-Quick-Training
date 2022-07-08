@@ -10,7 +10,7 @@ Window {
     StackView{
         id: stackView
         anchors.fill: parent
-        initialItem: pageSetAlarm
+        initialItem: pageHome
     }
 
     Component{
@@ -18,11 +18,22 @@ Window {
         PageHome{}
     }
     Component {
-        id: pageAlarm
-        PageAlarm{}
+        id: pageAlarmList
+        PageAlarmList{
+            onToBack: stackView.pop()
+            onToSetAlarm: stackView.push(pageSetAlarm)
+        }
     }
     Component {
         id: pageSetAlarm
-        PageSetAlarm{}
+        PageSetAlarm{
+            onToBack: stackView.pop()
+        }
+    }
+    Component {
+        id: pageTimer
+        PageTimer{
+            onToBack: stackView.pop()
+        }
     }
 }
