@@ -10,80 +10,6 @@ struct Contact{
     string numero;
 };
 
-class Filtro{
-private:
-    vector<Contact> contWithFilt;
-public:
-    vector<Contact> getContacts(){
-        return contWithFilt;
-    }
-    void chooseFuction(string app, int scelta, vector<Contact> contatti){
-        contWithFilt = contatti;
-        switch(scelta){
-        case 1:
-            nameStartsWith(app);
-            break;
-        case 2:
-            prefix(app);
-            break;
-        case 3:
-            numContacts(app);
-            break;
-        case 4:
-            numSurnameLetters(app);
-            break;
-        case 5:
-            resetFilters(contatti);
-            break;
-        }
-    }
-    void nameStartsWith(string app){
-        for(int i=0; i<contWithFilt.size(); i++){
-            int esci = 0;
-            for(int j=0; j<app.size(); j++){
-                if(contWithFilt.at(i).nome.at(j) == app.at(j)){
-                    esci++;
-                }
-            }
-            if(esci != app.size()){
-                contWithFilt.erase(contWithFilt.begin() + i);
-            }
-        }
-    }
-    void prefix(string app){
-        for(int i=0; i<contWithFilt.size(); i++){
-            int esci = 0;
-            for(int j=0; j<app.size(); j++){
-                if(contWithFilt.at(i).nome.at(j) == app.at(j)){
-                    esci++;
-                }
-            }
-            if(esci != app.size()){
-                contWithFilt.erase(contWithFilt.begin() + i);
-            }
-        }
-    }
-    void numContacts(string app){
-        int num = stoi(app);
-        for(int i=contWithFilt.size()-1; i>=0; i--){
-            if(i>=num){
-                contWithFilt.erase(contWithFilt.begin() + i);
-            }
-        }
-    }
-    void numSurnameLetters(string app){
-        int num = stoi(app);
-        for(int i=0; i<contWithFilt.size(); i++){
-            if(contWithFilt.at(i).cognome.size() != num){
-                contWithFilt.erase(contWithFilt.begin() + i);
-            }
-        }
-    }
-    void resetFilters(vector<Contact> contatti){
-        contWithFilt = contatti;
-    }
-};
-
 class IFilter {
 public:
     virtual bool filter(const Contact &contact) = 0;
@@ -154,8 +80,11 @@ public:
         contatti.push_back(c);
     }
 
-    vector<Contact> getContacts(){
-        return contatti;
+    void setContacts(vector<Contact*> contacts){
+        contatti.clear();
+        for(int i=0; i<contacts.size(); i++){
+            contatti.push_back(*contacts.at(i));
+        }
     }
 
     Contact* find(string nome){
@@ -177,8 +106,6 @@ public:
         return res;
     }
 };
-
-
 
 Contact creaContatto(){
     string nome, cognome, numero;
@@ -223,7 +150,7 @@ int main()
                 cin >> nome;
                 Contact *c = pb.find(nome);
                 if(c == nullptr) cout << "Non esiste un contatto con il nome appena digitato" << endl;
-                else cout << &c;
+                else cout << "\nNome: " << c->nome << "\nCognome: " << c->cognome << "\nNumero: " << c->numero << endl;
                 break;
             }
             case 3: {
@@ -232,9 +159,10 @@ int main()
             }
             case 4: {
                 int sceltaF;
+                Phonebook filtPb = pb;
                 do{
-                    cout << "Gestisci i filtri:" << endl;
-                    cout << "0 - Applica" << endl;
+                    cout << "\nGestisci i filtri:" << endl;
+                    cout << "0 - Esci" << endl;
                     cout << "1 - Nome inizia con" << endl;
                     cout << "2 - Prefisso" << endl;
                     cout << "3 - Numero di contatti da visualizzare" << endl;
@@ -250,8 +178,9 @@ int main()
                             cout << "Digita la/e lettera/e: ";
                             cin >> app;
                             NameStartsWith *temp = new NameStartsWith(app);
-                            res = pb.filter(*temp);
-                            cout << &res;
+                            res = filtPb.filter(*temp);
+                            filtPb.setContacts(res);
+                            cout << filtPb;
                             break;
                         }
                         case 2: {
@@ -259,8 +188,9 @@ int main()
                             cout << "Digita il prefisso: ";
                             cin >> app;
                             Prefix *temp = new Prefix(app);
-                            res = pb.filter(*temp);
-                            cout << &res;
+                            res = filtPb.filter(*temp);
+                            filtPb.setContacts(res);
+                            cout << filtPb;
                             break;
                         }
                         case 3: {
@@ -268,8 +198,9 @@ int main()
                             cout << "Digita il numero di contatti: ";
                             cin >> app;
                             NumContacts *temp = new NumContacts(app);
-                            res = pb.filter(*temp);
-                            cout << &res;
+                            res = filtPb.filter(*temp);
+                            filtPb.setContacts(res);
+                            cout << filtPb;
                             break;
                         }
                         case 4: {
@@ -277,12 +208,14 @@ int main()
                             cout << "Digita il numero di lettere dei cognomi: ";
                             cin >> app;
                             NumSurnameLetters *temp = new NumSurnameLetters(app);
-                            res = pb.filter(*temp);
-                            cout << &res;
+                            res = filtPb.filter(*temp);
+                            filtPb.setContacts(res);
+                            cout << filtPb;
                             break;
                         }
                         case 5: {
-                            res.clear();
+                            filtPb = pb;
+                            cout << filtPb;
                             break;
                         }
                     }
