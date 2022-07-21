@@ -179,6 +179,7 @@ int main()
                             cin >> app;
                             NameStartsWith *temp = new NameStartsWith(app);
                             res = filtPb.filter(*temp);
+                            delete temp;
                             filtPb.setContacts(res);
                             cout << filtPb;
                             break;
@@ -189,6 +190,7 @@ int main()
                             cin >> app;
                             Prefix *temp = new Prefix(app);
                             res = filtPb.filter(*temp);
+                            delete temp;
                             filtPb.setContacts(res);
                             cout << filtPb;
                             break;
@@ -199,6 +201,7 @@ int main()
                             cin >> app;
                             NumContacts *temp = new NumContacts(app);
                             res = filtPb.filter(*temp);
+                            delete temp;
                             filtPb.setContacts(res);
                             cout << filtPb;
                             break;
@@ -209,6 +212,7 @@ int main()
                             cin >> app;
                             NumSurnameLetters *temp = new NumSurnameLetters(app);
                             res = filtPb.filter(*temp);
+                            delete temp;
                             filtPb.setContacts(res);
                             cout << filtPb;
                             break;
